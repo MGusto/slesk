@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ja Ja, tror du er morsom du?</title>
+    <style>
+        .layout1 {
+            display: flex;
+            flex-wrap: wrap;
+            flex-shrink: 5;
+            align-items: space-around;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .layout3 {
+            display: grid;
+            column-gap: 25px;
+            row-gap: 25px;
+            grid-template-columns: auto auto;
+            align-content: space-around;
+            justify-content: space-evenly;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            flex-shrink: 5;
+            align-items: space-around;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .nasty {
+            background-color: lightgray;
+            border: 2px solid black;
+            padding-left: 20px;
+        }
+
+        .card {
+            width: 500px;
+            background-color: lightgray;
+            border: 2px solid rgb(0, 0, 0);
+            margin: 10px;
+        }
+
+        .innercard {
+            width: 500px;
+            background-color: lightgray;
+            border: 2px solid rgb(0, 0, 0);
+            margin: 10px;
+        }
+
+        .header {
+            color: white;
+            text-align: center;
+            font-size: x-large;
+            padding: 2% 0%;
+            border: 2px solid rgb(117, 117, 117);
+            user-select: none;
+        }
+
+        .dark {
+            background-color: rgb(75, 70, 70);
+        }
+
+        .butter {
+            background-color: rgb(182, 182, 53);
+        }
+
+        h3 {
+            padding-left: 2%;
+        }
+
+        h2 {
+            padding-left: 2%;
+        }
+
+        p {
+            padding-left: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nasty">
+        <h2>Her bor stygg raw text</h2>
+        <p>Omega dog liste incoming. Her skal det være en oversiktlig liste i semi-uformatert ".txt" typ nasty format.
+        </p>
+        <p>Ja ja, nok av dette, her kommer'n:</p>
+        <br>
+        <li>Ultra dog</li>
+        <li><a href="https://en.wiktionary.org/wiki/dogwater">Dogwater</a></li>
+        <li>Omega dog</li>
+        <li>Dog Mf</li>
+        <br>
+        <div style="display:flex;padding-left: 2%;padding-bottom: 2%;" id="picsButton"></div>
+        <br>
+        <button id="textButton" onclick="textUpdate()">Klikk her nå!</button>
+        <br>
+        <h3>⬇ Ja ja, tror du er morsom du? Klikk på greiene der nede da... ⬇</h3>
+    </div>
+
+    <div class="card">
+        <div class="header dark" onclick="showBio()">
+            Hvem er jeg?
+        </div>
+        <div id="cardBio">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="header dark" onclick="showDogz()">
+            Dogz™ Location
+        </div>
+        <div id="cardDogz">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="header butter" onclick="showButter()">
+            ButterGod™
+        </div>
+        <div id="cardButter">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="header dark" onclick="showPics()">
+            WIP
+        </div>
+        <div id="cardPics">
+        </div>
+    </div>
+</body>
+
+<script>
+
+    function textUpdate() {
+        document.getElementById('textButton').innerHTML= "Takk som gadd...";
+    }
+
+    function showBio() {
+        blankBio();
+        document.getElementById('cardBio').innerHTML = /*HTML*/`
+        <div class="innerCard">
+            <h3> Felix Alexandr der Minassian Bjørseth </h3>
+                <ul>
+                    <li>27 år (25.04.1997).</li> <img src="img/ratgrab.jpg" ;
+                        style="float:right;height:100px;padding-right: 5%;" />
+                    <li>Gamer som bare det.</li>
+                    <li>Ja ja, tror jeg er morsom jeg?</li>
+                    <li>Sjekk her, kompis. ➡</li>
+                    <li>ADHD.</li>
+                    <li>Okay, nok om meg, stikk ellers får du kjeppen.</li>
+                </ul>
+        </div>
+        `;
+    }
+
+    function showDogz() {
+        blankDogz();
+        document.getElementById('cardDogz').innerHTML = /*HTML*/`
+        <div class="innerCard">
+                <div style="display:flex;flex-wrap:wrap;flex-shrink: 5;align-items: space-around;justify-content: center;padding: 10px;"
+                    ; id="gallery">
+                    <img src="img/shturself.png" ;
+                        style="height:200px;padding-left:2%;padding-right:2%;padding-bottom:1%;" />
+                    <img src="img/shakin.gif" ; style="height:200px;padding-left:2%;padding-bottom:1%;" />
+                    <img src="img/stroke.gif" ; style="height:200px;padding-left:2%;padding-right:2%;" />
+                    <img src="img/wobble.gif" ; style="height:200px;padding-left:2%;" />
+                </div>
+            </div>
+        `;
+    }
+
+    function showButter() {
+        blankButter();
+        document.getElementById('cardButter').innerHTML = /*HTML*/`
+        <div class="innerCard">
+                <h2>ButterGod</h2>
+                <p>God with the Butter</p>
+                <p>ButterGod</p>
+                <p>God with the butter on him</p>
+            </div>
+        `;
+    }
+
+    function showPics() {
+        blankPics();
+        document.getElementById('cardPics').innerHTML = /*HTML*/`
+<div style="display:flex;padding-left: 2%;padding-bottom: 2%;" id="picsButton"></div>
+        `;
+    }
+
+    showNum1();
+    function showNum1() {
+        document.getElementById('picsButton').innerHTML = /*HTML*/`
+        <button onclick="showNum4()">
+        ⬅ 
+        </button>
+        <div>
+            <img src="img/numone.png">
+        </div>
+        <button onclick="showNum2()">
+        ➡
+        </button>
+        `;
+    }
+    function showNum2() {
+        document.getElementById('picsButton').innerHTML = /*HTML*/`
+        <button onclick="showNum1()">
+        ⬅ 
+        </button>
+        <div>
+            <img src="img/numtwo.png">
+        </div>
+        <button onclick="showNum3()">
+        ➡
+        </button>
+        `;
+    }
+    function showNum3() {
+        document.getElementById('picsButton').innerHTML = /*HTML*/`
+        <button onclick="showNum2()">
+        ⬅ 
+        </button>
+        <div>
+            <img src="img/numthree.png">
+        </div>
+        <button onclick="showNum4()">
+        ➡
+        </button>
+        `;
+    }
+    function showNum4() {
+        document.getElementById('picsButton').innerHTML = /*HTML*/`
+        <button onclick="showNum3()">
+        ⬅ 
+        </button>
+        <div>
+            <img src="img/numfour.png">
+        </div>
+        <button onclick="showNum1()">
+        ➡
+        </button>
+        `;
+    }
+
+    function layout1() {
+        document.getElementById('gallery').classList = [];
+        document.getElementById('gallery').classList.add('layout1');
+    }
+
+    function layout3() {
+        document.getElementById('gallery').classList = [];
+        document.getElementById('gallery').classList.add('layout3');
+    }
+
+    function blankAll() {
+        document.getElementById('cardBio').innerHTML = '';
+        document.getElementById('cardDogz').innerHTML = '';
+        document.getElementById('cardButter').innerHTML = '';
+        document.getElementById('cardPics').innerHTML = '';
+        document.getElementById('cardGame').innerHTML = '';
+        document.getElementById('cardButterDog').innerHTML = '';
+    }
+
+    function blankBio() {
+        document.getElementById('cardDogz').innerHTML = '';
+        document.getElementById('cardButter').innerHTML = '';
+        document.getElementById('cardPics').innerHTML = '';
+    }
+    function blankDogz() {
+        document.getElementById('cardBio').innerHTML = '';
+        document.getElementById('cardButter').innerHTML = '';
+        document.getElementById('cardPics').innerHTML = '';
+    }
+    function blankButter() {
+        document.getElementById('cardDogz').innerHTML = '';
+        document.getElementById('cardBio').innerHTML = '';
+        document.getElementById('cardPics').innerHTML = '';
+    }
+    function blankPics() {
+        document.getElementById('cardDogz').innerHTML = '';
+        document.getElementById('cardButter').innerHTML = '';
+        document.getElementById('cardBio').innerHTML = '';
+    }
+
+
+</script>
+
+</html>
