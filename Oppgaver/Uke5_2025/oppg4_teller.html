@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+    <style>
+
+        .card {
+            border: 2px black solid;
+            margin: 20px;
+            padding: 35px;
+            max-width: 400px;
+            max-height: 400px;
+            align-self: center;
+            background-color: lightgray;
+            font-size: large;
+        }
+
+        output {
+            font-size: large;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="card">
+    <div id="output">...</div>
+    <br>
+    <button onclick="setNum16()">Set Number to 16</button>
+    <button onclick="setNum47()">Set Number to 47</button>
+</div>
+
+<div class="card">
+    <div id="outerputter">0</div>
+    <br>
+    <button onclick="subOne()">Subtract 1</button>
+    <button onclick="resetCount()">Reset</button>
+    <button onclick="addOne()">Add 1</button>
+</div>
+
+    <script>
+        // var number = 5; //int
+        // var floatnumber = 5.5; //kommasep.tall
+        // var text = "en liten tekstbit"; //string
+        // var enkeltTegn = 'a'; //char
+        // var booleans = true; //booleans
+    
+        var outputDiv = document.getElementById('output');
+        var numToShow = 0;
+
+        function setNum16(){
+            numToShow = 16;
+            outputDiv.innerHTML = numToShow;
+        }
+
+        function setNum47(){
+            numToShow = 47;
+            outputDiv.innerHTML = numToShow;
+        }
+        
+        var outerputterDiv = document.getElementById('outerputter');
+        var counter = 0;
+
+        function subOne(){
+            counter = counter - 1;
+            outerputterDiv.innerHTML = counter;
+        }
+
+        function resetCount(){
+            counter = 0;
+            outerputterDiv.innerHTML = counter;
+        }
+
+        function addOne(){
+            counter = counter + 1;
+            outerputterDiv.innerHTML = counter;
+        }
+        
+
+    </script>
+</body>
+
+</html>
