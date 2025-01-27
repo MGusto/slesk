@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduksjonstekst</title>
+    <style>
+
+
+        #mod {
+            border: 2px darkgray solid;
+            background-color: lightblue;
+            padding: 10px;
+            margin: 10px;
+            max-width: 750px;
+        }
+
+        img {
+            max-width: 250px;
+            float: right;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mod">
+        <h1>Introduksjonstekst;</h2>
+            <p>Hei! Jeg heter Felix, er 27 år gammel og bor i Drammen.</p>
+            <p>Her er en liste med hobbyer / ting jeg setter pris på;</p>
+            <img src="img/felix2.jpg" alt="Ikke min katt">
+            <li>Gaming</li>
+            <li>Skrive skjønnlitterær tekst</li>
+            <ul>- Novelleformat</ul>
+            <ul>- Sci-fi</ul>
+            <ul>- Historisk fiksjon</ul>
+            <ul>- Fantasy</ul>
+            <li>Leser litt også, men sjeldent</li>
+            <li>Høre på god musikk</li>
+            <ul>- 90's East Coast (New York) Hip Hop / Boom bap</ul>
+            <ul>- UK 90-2000 Jungle / Drum & Bass</ul>
+            <ul>- Alt fra Brazil mellom 1950 og 1985ish</ul>
+            <li>Idk, tenke?</li>
+            <br>
+
+            <button onclick="colorChange()">Grønn Bakgrunn</button><button onclick="colorDefault()">Blå Bakgrunn</button>
+    </div>
+
+</body>
+<script>
+    
+    function colorChange(){
+        document.getElementById("mod").style.backgroundColor = "lightgreen";
+    }
+
+    function colorDefault(){
+        document.getElementById("mod").style.backgroundColor = "lightblue";
+    }
+    
+
+</script>
+
+</html>
