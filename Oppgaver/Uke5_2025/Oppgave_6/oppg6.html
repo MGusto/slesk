@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivå2oppg</title>
+    <style>
+        h1 {
+            font-size: larger;
+            font-style: normal;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: small;
+            font-style: italic;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: larger;
+            font-style: normal;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainDiv"><h3>Her står det noe!</h3></div>
+    <button onclick="valgfrittNavn('red',10,100,'<h2>Small Red</h2>')">Small Red</button>
+    <button onclick="valgfrittNavn('blue',20,150,'<h1>Big Blue</h1>')">Big Blue</button>
+
+    <script>
+        function valgfrittNavn(color, width, height, text) {
+            document.getElementById('mainDiv').innerHTML = /*html*/`
+        <div style="background-color:${color}; width:${width}%; height:${height}px;">${text}</div>
+        `;
+        }
+
+        //function valgfrittNavn2(color) {
+        //    document.getElementById('mainDiv').innerHTML = /*html*/`
+        //<div style="background-color:${color}; width: 100%; height:100px;"></div>
+        //`;
+        //}
+
+    </script>
+</body>
+
+</html>
