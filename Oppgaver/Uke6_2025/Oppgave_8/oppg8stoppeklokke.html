@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clockBody {
+            background-color: darkslategray;
+            height: 225px;
+            width: 225px;
+            border-radius: 10%;
+            padding: 30px;
+        }
+
+        .clockButton {
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 25%;
+            height: 50px;
+            width: 50px;
+        }
+
+        .clockDisplay {
+            height: 40px;
+            width: 44px;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-left: 38%;
+            background-color: lightgray;
+            text-align: center;
+            font-size: large;
+
+        }
+
+        .roundsList {
+            background-color: lightgray;
+            height: 85px;
+            width: 150px;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-left: 8%;
+            font-size: small;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clockBody">
+        <button id="startButton" class="clockButton" onclick="startCount()">Start</button>
+        <button class="clockButton" onclick="saveCount()">Save</button>
+        <button class="clockButton" onclick="resetCount()">Reset</button><br>
+       <!--<button id="pauseResume" class="clockButton" onclick="pauseCount()">Pause</button> uferdig pause/unpause knapp--> 
+        <div id="screen" class="clockDisplay">0</div> ROUNDS: <div id="lastRound" class="roundsList"></div><br>
+    </div>
+
+</body>
+
+<script>
+    const screen = document.getElementById('screen');
+    const roundTime = document.getElementById('lastRound');
+    var seconds = 0;
+    var isPaused = false; //uff...
+    var intervalId;
+    //var timeStorage; ??
+    var timer;
+
+    function startCount() {
+        intervalID = setInterval(countSecs, 1000);
+        document.getElementById('startButton').disabled = true;
+    }
+
+    function countSecs() {
+        screen.innerHTML = seconds;
+        seconds++;
+    }
+
+    //pause-unpause funksjon som ikke fungerer helt enda
+    function pauseCount() {
+        if (isPaused) {
+            intervalId = setInterval(countSecs, 1000);
+            document.getElementById('pauseUnpause').innerText = 'Pause';
+        } else {
+            clearInterval(intervalId);
+        document.getElementById('pauseUnpause').innerText = 'Resume';
+    }
+    isPaused = !isPaused;
+        
+    }
+
+    function saveCount() {
+        roundTime.innerHTML += `<li>${seconds - 1} sec</li>`;
+    }
+
+    function resetCount() {
+        location.reload();
+        clearInterval(intervalId);
+        clearInterval(timer);
+        document.getElementById('startButton').disabled = false;
+        document.getElementById('pauseUnpause').innerText = 'Pause';
+        isPaused = false;
+    }
+
+
+</script>
+
+</html>
