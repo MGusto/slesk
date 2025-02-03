@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList??</title>
+    <style>
+        h1 {
+            font-size: larger;
+            font-style: normal;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: small;
+            font-style: italic;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: larger;
+            font-style: normal;
+            text-align: left;
+        }
+
+        #redCard {
+            background-color: red;
+            border: 2px solid black;
+            max-width: 50%;
+            min-height: 60px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            user-select: none;
+        }
+
+        #greenCard {
+            background-color: green;
+            border: 2px solid black;
+            max-width: 50%;
+            min-height: 60px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            user-select: none;
+        }
+
+        #blueCard {
+            background-color: blue;
+            border: 2px solid black;
+            max-width: 50%;
+            min-height: 60px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            user-select: none;
+        }
+
+
+        body {
+            align-content: space-around;
+            padding: 5%;
+            margin: 5%;
+        }
+
+        .active {
+            opacity: 25%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="redCard" onclick="cardPick('redCard', 'greenCard', 'blueCard'); colorPick('red')">
+        <h3>Click for red!</h3>
+    </div>
+    <div id="greenCard" onclick="cardPick('greenCard', 'redCard', 'blueCard'); colorPick('green')">
+        <h3>Click for green!</h3>
+    </div>
+    <div id="blueCard" onclick="cardPick('blueCard', 'greenCard', 'redCard'); colorPick('blue')">
+        <h3>Click for blue!</h3>
+    </div>
+    <br>
+    <div>
+        <h3>Selected:</h3>
+    </div>
+    <div id="selectedDiv">...</div>
+    <br>
+    <button onclick="setColor()">Apply</button>
+
+    <script>
+        var colSelect;
+
+        function colorPick(col) {
+            colSelect = col;
+            selectedDiv.innerHTML = /*html*/`
+            <div>${colSelect}!</div>
+            `;
+        }
+
+        function cardPick(activeCard, inactiveCard1, inactiveCard2) {
+            document.getElementById(activeCard).classList.add("active");
+            document.getElementById(inactiveCard1).classList.remove("active");
+            document.getElementById(inactiveCard2).classList.remove("active");
+        }
+
+        function setColor() {
+            document.body.style.backgroundColor = colSelect;
+        }
+
+    </script>
+</body>
+
+</html>
