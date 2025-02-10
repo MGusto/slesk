@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mainBoard {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+            gap: 2px;
+            max-width: 750px;
+        }
+
+        .bottomBoard {
+            display: grid;
+            grid-template-columns: auto auto;
+            max-width: 750px;
+        }
+
+        .key {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        #space {
+            width: 500px;
+        }
+
+        #reset {
+            width: 100px;
+        }
+
+        .textDisplay {
+            margin: 5px;
+            padding: 5px;
+            max-width: 750px;
+            min-height: 50px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            text-wrap: wrap balance;
+        }
+        
+        h2 {
+            margin:10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Trykk på tastaturknapper for å skrive;</h2>
+    <br>
+    <div id="app" class="textDisplay"></div>
+
+    <div class="mainBoard">
+        <button class="key" onclick="pushedLetter(this)">Q</button>
+        <button class="key" onclick="pushedLetter(this)">W</button>
+        <button class="key" onclick="pushedLetter(this)">E</button>
+        <button class="key" onclick="pushedLetter(this)">R</button>
+        <button class="key" onclick="pushedLetter(this)">T</button>
+        <button class="key" onclick="pushedLetter(this)">Y</button>
+        <button class="key" onclick="pushedLetter(this)">U</button>
+        <button class="key" onclick="pushedLetter(this)">I</button>
+        <button class="key" onclick="pushedLetter(this)">O</button>
+        <button class="key" onclick="pushedLetter(this)">P</button>
+        <button class="key" onclick="pushedLetter(this)">Å</button>
+
+        <button class="key" onclick="pushedLetter(this)">A</button>
+        <button class="key" onclick="pushedLetter(this)">S</button>
+        <button class="key" onclick="pushedLetter(this)">D</button>
+        <button class="key" onclick="pushedLetter(this)">F</button>
+        <button class="key" onclick="pushedLetter(this)">G</button>
+        <button class="key" onclick="pushedLetter(this)">H</button>
+        <button class="key" onclick="pushedLetter(this)">J</button>
+        <button class="key" onclick="pushedLetter(this)">K</button>
+        <button class="key" onclick="pushedLetter(this)">L</button>
+        <button class="key" onclick="pushedLetter(this)">Ø</button>
+        <button class="key" onclick="pushedLetter(this)">Æ</button>
+
+        <button class="key" onclick="pushedLetter(this)">Z</button>
+        <button class="key" onclick="pushedLetter(this)">X</button>
+        <button class="key" onclick="pushedLetter(this)">C</button>
+        <button class="key" onclick="pushedLetter(this)">V</button>
+        <button class="key" onclick="pushedLetter(this)">B</button>
+        <button class="key" onclick="pushedLetter(this)">N</button>
+        <button class="key" onclick="pushedLetter(this)">M</button>
+        <button class="key" onclick="pushedLetter(this)">,</button>
+        <button class="key" onclick="pushedLetter(this)">.</button>
+        <button class="key" onclick="pushedLetter(this)">!</button>
+        <button class="key" onclick="pushedLetter(this)">?</button>
+    </div>
+
+    <div class="bottomBoard">
+        <button id="space" class="key" onclick="pushedLetter(this)"> </button>
+        <button id="reset" class="key" onclick="pushedBreak()">ENTER</button>
+        <button id="reset" class="key" onclick="resetText()">RESET</button>
+    </div>
+    <br>
+
+    <!-- <div class="pink box" onclick="changeColor(this)"></div>
+    <div class="red box" onclick="changeColor(this)"></div>
+    <div class="blue box" onclick="changeColor(this)"></div> -->
+
+</body>
+<script>
+    /*     function changeColor(element) {
+            element.style.backgroundColor = "green"
+            element.innerHTML = 'Hei'
+        } */
+
+    function pushedLetter(htmlElement) {
+        let letterPressed = htmlElement.innerHTML;
+        console.log(letterPressed);
+        app.innerHTML += letterPressed;
+    }
+
+    function pushedBreak() {
+        app.innerHTML += '<br>';
+    }
+
+    function resetText() {
+        location.reload();
+    }
+
+</script>
+
+</html>
