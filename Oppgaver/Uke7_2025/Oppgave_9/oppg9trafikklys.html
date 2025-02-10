@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #trafficlight {
+            width: 250px;
+            height: 700px;
+            background-color: darkslategray;
+            border-radius: 5em;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 15px;
+        }
+
+        .red {
+            background-color: red;
+            opacity: 10%;
+        }
+
+        .yellow {
+            background-color: yellow;
+            opacity: 10%;
+        }
+
+        .green {
+            background-color: green;
+            opacity: 10%;
+        }
+
+        .circle {
+            box-shadow: -5px 10px 20px 10px black inset;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+
+        }
+
+        .active {
+            opacity: 100%;
+        }
+    </style>
+</head>
+
+<body onload="lightTimer()">
+    <div id="trafficlight">
+        <div id="red" class="red circle"></div>
+        <div id="yellow" class="yellow circle"></div>
+        <div id="green" class="green circle"></div>
+    </div>
+    <br>
+
+    <!-- <button onclick="activeLight('green', 'yellow', 'red', 'red')">Red</button>
+    <button onclick="activeLight('green', 'green', 'red', 'yellow')">Red & Yellow</button>
+    <button onclick="activeLight('red', 'yellow', 'green', 'green')">Green</button>
+    <button onclick="activeLight('red', 'green', 'yellow', 'yellow')">Yellow</button> -->
+
+    <!-- Trenger ikke knapper lenger siden det går automatisk... -->
+
+    <h2>AUTOMATISK TRAFIKKLYS 😎</h2>
+
+    <button onclick="reloadPage()">Reload Page</button>
+
+</body>
+<script>
+    function lightTimer() {
+        setTimeout(activeRed, 500);
+    }
+
+    function activeGreen() {
+        activeLight('red', 'yellow', 'green', 'green');
+        setTimeout(activeYellow, 2500);
+    }
+
+    function activeYellow() {
+        activeLight('red', 'green', 'yellow', 'yellow');
+        setTimeout(activeRed, 2500);
+    }
+
+    function activeRed() {
+        activeLight('green', 'yellow', 'red', 'red');
+        setTimeout(activeRedAndYellow, 2500)
+    }
+
+    function activeRedAndYellow() {
+        activeLight('green', 'green', 'red', 'yellow');
+        setTimeout(activeGreen, 2000)
+    }
+
+    function activeLight(divId1, divId2, divId3, divId4) {
+        document.getElementById(divId1).classList.remove("active");
+        document.getElementById(divId2).classList.remove("active");
+        document.getElementById(divId3).classList.add("active");
+        document.getElementById(divId4).classList.add("active");
+    }
+
+    function reloadPage() {
+        location.reload();
+    }
+
+</script>
+
+</html>
