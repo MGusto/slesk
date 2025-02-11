@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyspæra</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            background-color: rgb(0, 0, 0);
+        }
+
+        .darkRoom {
+            background-color: rgb(32, 32, 32);
+            width: 50%;
+            height: 500px;
+            user-select: none;
+            border-radius: 10%;
+            text-align: center;
+            color: white;
+        }
+
+        .switchBody {
+            display: grid;
+            grid-template-columns: auto;
+            place-items: center;
+            background-color: rgb(207, 207, 207);
+            border: 2px solid darkgray;
+            width: 150px;
+            height: 250px;
+            user-select: none;
+        }
+        
+        #lightswitch {
+            background-image: linear-gradient(#eeeeee, #5e5e5e);
+            width: 50px;
+            height: 150px;
+        }
+
+        .litRoom {
+            background-color: rgb(205, 205, 115);
+            width: 50%;
+            height: 500px;
+            user-select: none;
+            border-radius: 10%;
+            text-align: center;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="view" class="darkRoom"><h2>Flick the switch...</h2></div>
+    <br>
+    <div class="switchBody">
+        <button id="lightswitch" onclick="toggleLight()"> </button>
+    </div>
+
+</body>
+<script>
+    let light = false;
+
+    function toggleLight() {
+        if (light == false) {
+            document.getElementById('view').classList.remove("darkRoom")
+            document.getElementById('view').classList.add("litRoom")
+            document.getElementById('view').innerHTML = '<h2>Good Morning!</h2>'
+            document.getElementById('lightswitch').style.backgroundImage = "linear-gradient(#5e5e5e, #eeeeee)";
+            document.body.style.backgroundColor = "#FFFFFF";
+            light = true;
+        } else {
+            document.getElementById('view').classList.remove("litRoom")
+            document.getElementById('view').classList.add("darkRoom")
+            document.getElementById('view').innerHTML = '<h2>Good Night...</h2>'
+            document.getElementById('lightswitch').style.backgroundImage = "linear-gradient(#eeeeee, #5e5e5e)";
+            document.body.style.backgroundColor = "#000000";
+            light = false;
+        }
+    }
+</script>
+
+</html>
