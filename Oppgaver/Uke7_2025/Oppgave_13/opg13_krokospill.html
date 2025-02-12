@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krokodillespillespill</title>
+    <style>
+        #points {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .box {
+            text-align: center;
+        }
+
+
+        .gameSpace {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            place-items: center;
+        }
+
+        #answerbox {
+            font-size: 35px;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+
+        .buttonbox {
+            display: grid;
+            grid-template-columns: auto auto;
+            place-items: center;
+        }
+
+        #app {
+            border: 2px solid black;
+            width: 300px;
+            height: 250px;
+            background-image: linear-gradient(darkolivegreen, rgba(85, 107, 47, 0));
+        }
+
+        #numOne{
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        #numTwo{
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        /*         .right{
+            color: green;
+        }
+
+        .wrong{
+            color: red;
+        } */
+    </style>
+</head>
+
+<body onload="showRng()">
+    <div id="app">
+        <br>
+        <div class="gameSpace">
+            <div id="numOne">...</div>
+            <input id="answerbox" type="text" placeholder=">" oninput="userAnswer = this.value"></input>
+            <div id="numTwo">...</div>
+        </div><br>
+        <div class="buttonbox">
+            <button id="btnSubmit" onclick="submit()">Submit</button>
+            <button onclick="reroll()">Reroll</button>
+        </div>
+        <br>
+        <div id="reward" class="box">Which side is bigger?<br>Use "<", ">" or "="...</div>
+                <br><br>
+                <div id="points"></div>
+        </div>
+
+
+</body>
+<script>
+    const answer = document.getElementById("answerbox").innerHTML;
+    let solution = '';
+    let setAnswer = false;
+    let tempanswer;
+    let userAnswer = '';
+    let points = 0;
+    let numOne = 0;
+    let numTwo = 0;
+
+    function reroll() {
+        showRng();
+        document.getElementById('points').style.color = `black`;
+        document.getElementById("reward").innerHTML = `Another one...<br>Use "<", ">" or "="...`;
+        document.getElementById("reward").style.color = `black`;
+        document.getElementById("btnSubmit").disabled = false;
+    }
+
+    /*     function pointScore() {
+            
+        } */
+
+    function submit() {
+        tempAnswer = userAnswer;
+
+        if (tempAnswer == solution) {
+            setAnswer = true;
+        } else {
+            setAnswer = false;
+        };
+
+        if (setAnswer == true) {
+            points++;
+            document.getElementById('points').innerText = `Points: ${points}`;
+            document.getElementById('points').style.color = `green`;
+            document.getElementById("reward").innerHTML = `You got it!`;
+            document.getElementById("reward").style.color = "green";
+            document.getElementById("btnSubmit").disabled = true;
+        } else {
+            points = 0;
+            document.getElementById('points').innerText = `Points: ${points}`;
+            document.getElementById('points').style.color = `red`;
+            document.getElementById("reward").innerHTML = `Oops, try again...`;
+            document.getElementById("reward").style.color = "red";
+        };
+    }
+
+    /*     function answerCheck() {
+    
+    
+        } */
+
+    function isAnswerCorrect() {
+
+    }
+
+    function showRng() {
+        document.getElementById('points').innerText = `Points: ${points}`;
+        numOne = getRng();
+        numTwo = getRng();
+        document.getElementById("numOne").innerHTML = numOne;
+        document.getElementById("numTwo").innerHTML = numTwo;
+        if (numOne < numTwo) {
+            solution = '<';
+        };
+
+        if (numOne > numTwo) {
+            solution = '>';
+        };
+
+        if (numOne == numTwo) {
+            solution = '=';
+        };
+    }
+
+    function getRng() {
+        return Math.round(Math.random() * 10);
+    }
+
+</script>
+
+</html>
