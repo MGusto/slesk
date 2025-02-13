@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String to uppercase</title>
+    <style>
+        .bodyDisplay {
+            background-color: cadetblue;
+            display: grid;
+            place-items: center;
+            width: 500px;
+            height: 500px;
+        }
+
+        .output {
+            border-bottom: 2px solid black;
+            margin-bottom: 100px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body onload="updateView()">
+    <div id="app">
+    </div>
+
+</body>
+<script>
+    //Model
+    let storedString;
+    let outputString = '';
+
+    //View
+    function updateView() {
+        document.getElementById('app').innerHTML = /*HTML*/ `
+        <div class="bodyDisplay">
+        <h2>Capitalizing tool:</h2>
+        <div class="inputView">
+            <input id="txtbox" type="text" placeholder="Your text here..." oninput="storedString = this.value"
+                value="${storedString ?? ''}">
+                <button id="submitBtn" type="submit" onclick="sendString(storedString)">Submit</button>
+        </div>
+        <br>
+        <div class="output">${outputString}</div>
+    </div>
+        `;
+    }
+
+    //Controller
+    function sendString(storedString) {
+        outputString = storedString.charAt(0).toUpperCase() + storedString.slice(1);
+        updateView();
+    }
+
+
+</script>
+
+</html>
