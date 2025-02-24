@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adjektivhistorie</title>
+    <style>
+        .container {
+            margin: 20px;
+
+        }
+        .textbox {
+            display: flex;
+            margin: 5px;
+            padding: 5px;
+            flex-direction: row;
+            border: 2px dotted black;
+        }
+
+        .textdisplay {
+            margin-left: 3px;
+            margin-right: 3px;
+            color: green;
+        }
+
+        .buttonbox {
+            display: grid;
+            width: 500px;
+            grid-template-columns: 140px 140px;
+            row-gap: 1px;
+        }
+
+        button {
+            width: 100px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body class="container" onload="updateView()">
+        <div id="app"></div>
+</body>
+<script>
+    //model
+
+    let storysize = "...";
+    let storyprotag = "...";
+    let storyverb = "...";
+    let storyobj = "...";
+    let storypronoun = "...";
+
+    //view
+    function updateView() {
+        document.getElementById('app').innerHTML = /*HTML*/ `
+        <div id="textbox" class="textbox">Det var en gang en ${storysize} ${storyprotag} som ville ${storyverb} ${storyobj} - Ja ja, tror ${storypronoun} er morsom ${storypronoun}?</div>
+        <br>
+        <div class="buttonbox">
+            <button onclick="sizeChoice('liten')">liten</button>
+            <button onclick="sizeChoice('stor')">stor</button>
+            
+            <button onclick="protagChoice('mann')">mann</button>
+            <button onclick="protagChoice('dame')">dame</button>
+            
+            <button onclick="verbChoice('dra til')">dra til</button>
+            <button onclick="verbChoice('rane')">rane</button>
+            
+            <button onclick="objChoice('banken')">banken</button>
+            <button onclick="objChoice('bestemor')">bestemor</button>
+            
+        </div>
+        `;
+    }
+
+    //controller
+
+    function sizeChoice(size) {
+        storysize = size;
+        updateView();
+    }
+
+    function protagChoice(protag) {
+        storyprotag = protag;
+        updateView();
+        if (storyprotag == 'mann') {
+            storypronoun = 'han';
+            updateView();
+        } else {
+            storypronoun = 'hun';
+            updateView();
+        };
+    }
+    
+    function verbChoice(verb) {
+        storyverb = verb;
+        updateView();
+    }
+
+    function objChoice(objective) {
+        storyobj = objective;
+        updateView();
+    }
+
+</script>
+</html>
