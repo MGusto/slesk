@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Loop w/ String</title>
+</head>
+
+<body onload="updateView()">
+    <div id='app'></div>
+</body>
+<script>
+//m
+    let aCount = 0
+    let eCount = 0
+    let iCount = 0
+    let oCount = 0
+    let uCount = 0
+    let yCount = 0
+    let æCount = 0
+    let øCount = 0
+    let åCount = 0
+    let total = 0
+/*     const vowels = "aeiouyæøåAEIOUYÆØÅ" */
+//v
+function updateView(){
+    document.getElementById('app').innerHTML = /*HTML*/ `
+    <div id='displaybody'>Sentence = "jaja tror du er morsom du ja nå skal du se"
+        <div id="letters"></div>
+        <button onclick="countVowels('jaja tror du er morsom du ja nå skal du se')">Count Vowels</button>
+    <div id="vowelResult">A = ${aCount} E = ${eCount} I = ${iCount} O = ${oCount} U = ${uCount} Y = ${yCount} Æ = ${æCount} Ø = ${øCount} Å = ${åCount} TOTAL = ${total}</div>
+    </div>`;
+}
+//c
+function countVowels(inputString) {
+    aCount = 0
+    eCount = 0
+    iCount = 0
+    oCount = 0
+    uCount = 0
+    yCount = 0
+    æCount = 0
+    øCount = 0
+    åCount = 0
+    total = 0
+        for (let i = 0; i < inputString.length; i++) {
+            let thing = inputString.charAt(i);
+            if (thing == "a") {
+                aCount++;
+            }
+            if (thing == "e") {
+                eCount++;
+            }
+            if (thing == "i") {
+                iCount++;
+            }
+            if (thing == "o") {
+                oCount++;
+            }
+            if (thing == "u") {
+                uCount++;
+            }
+            if (thing == "y") {
+                yCount++;
+            }
+            if (thing == "æ") {
+                æCount++;
+            }
+            if (thing == "ø") {
+                øCount++;
+            }
+            if (thing == "å") {
+                åCount++;
+            }
+        }
+        total = aCount + eCount + iCount + oCount + uCount + yCount + æCount + øCount + åCount;
+        updateView();
+    }
+</script>
+
+</html>
