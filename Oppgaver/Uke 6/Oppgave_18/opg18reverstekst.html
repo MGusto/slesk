@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse String</title>
+    <style>
+        .box {
+            display: grid;
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid black;
+            background-color: white;
+        }
+
+        #outputbox {
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid black;
+            background-color: white;
+        }
+
+        #app {
+            display: grid;
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+            min-width: 400px;
+            max-width: 750px;
+            border: 2px solid black;
+            background-color: gray;
+        }
+
+        #txtbox {
+            text-align: center;
+        }
+    </style>
+</head>
+<body onload="updateView()">
+    <div id='app'></div>
+</body>
+</html>
+<script>
+//m
+let storedString = '';
+let reversedString = '...';
+
+//v
+function updateView() {
+    document.getElementById('app').innerHTML = /*HTML*/ `
+    <div class="box">
+        <h2>Get your input reversed!</h2>
+        <input id="txtbox" type="text" placeholder="Type your input in here and..." oninput="storedString = this.value"
+        value="${storedString ?? ''}">
+        <br>
+        <button id="submitButton" type="submit" onclick="sendString(storedString)">Reverse it!</button>
+    </div>
+    <br>
+    <br><h3>Output:</h3>
+    <div id="outputbox"><h3>${reversedString}</h3></div>
+    `;
+}
+
+//c
+function sendString(storedString) {
+    for (var i = storedString.length - 1; i >= 0; i--) {
+        reversedString += storedString[i];
+    }
+    console.log(reversedString);
+    updateView();
+}
+
+</script>
