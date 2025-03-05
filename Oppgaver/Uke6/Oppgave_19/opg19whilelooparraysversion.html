@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #results {
+            border: 2px black solid;
+
+        }
+    </style>
+</head>
+
+<body onload="updateView()">
+    <div id='app'></div>
+    <!--         <button onclick="multiplyBy2()">MultiplyBy2</button>
+        <div id="text">Bjarne liker alfabetet</div>
+        <button onclick="getFirstWord()">GetFirstWord</button> -->
+</body>
+<script>
+    //m
+    let rngone = 0;
+    let rngtwo = 0;
+    let winone = '';
+    let wintwo = '';
+    let minusloops = 0;
+    let finalOdds = '';
+    const oddNumbers = [];
+    let sliceamount = 0;
+    let loops = 0;
+    var searchDone = false;
+    var notrouble = true;
+
+    //v
+    function updateView() {
+        document.getElementById('app').innerHTML = /*HTML*/ `
+        <h2>This page generates random number pairs until it finds an equal pair (This version is better because it uses ARRAYS!):</h2>
+        <button id="rngbutton" onclick="searchNumbers()">Roll</button>
+        <br>
+        <br>
+        ${notrouble ? /*HTML*/`${searchDone ? /*HTML*/ `<div id="results"> All of your pairs: ${finalOdds} <br><br>Your equal pair: ${winone} + ${wintwo}. Had to reroll ${loops} times.</div>` : ''}` : /*HTML*/ `<div id="oops"> Sorry, the search was automatically timed out, try again!</div>`}
+        `;
+    }
+
+    function searchNumbers() {
+        loops = 0;
+        const oddNumbers = [];
+        searchDone = false;
+        notrouble = true;
+        rngone = getRng();
+        rngtwo = getRng();
+        setTimeout(failsafe, 10000)
+        while (rngone !== rngtwo) {
+            rngone = getRng();
+            rngtwo = getRng();
+            oddNumbers.push(` ${rngone} + ${rngtwo}`);
+            console.log(`Loop number ${loops} = ${rngone} + ${rngtwo}`);
+            loops++;
+        } if (rngone == rngtwo || searchDone == true) {
+            oddNumbers.splice(-1, 1)
+        finalOdds = oddNumbers;
+        winone = rngone;
+        wintwo = rngtwo;
+        searchDone = true;
+        updateView();
+        }
+    }
+
+    /*             finalOdds = oddNumbers.slice(2, -sliceamount);
+                winone = rngone;
+                wintwo = rngtwo;
+                searchDone = true;
+                updateView(); */
+    /*             trimEnd(); */
+
+
+
+    /*     function trimEnd() {
+            for (var i = oddStartTrim.length - 1; i = ','; i--) {
+                finalOdds = oddStartTrim.slice(i);
+                updateView();
+            }
+        } */
+
+    function failsafe() {
+        notrouble = false;
+    }
+
+
+    //c
+    /* function multiplyBy2() {
+        let number = 2;
+        while (number <= 100) {
+            number = number * 2;
+            document.getElementById('display').innerHTML += number + ' ';
+        }
+    }
+
+    function getFirstWord() {
+        let text = 'Bjarne liker alfabetet';
+        let separator = '';
+        let firstWord = '';
+        let index = 0;
+
+        while (separator !== ' ') {
+            if (text.charAt(index) === ' ') {
+                separator = ' ';
+            }
+            firstWord += text.charAt(index);
+            index++;
+            document.getElementById('text').innerHTML += firstWord + ' ';
+        }
+
+    } */
+
+    function getRng() {
+        return Math.round(Math.random() * 100);
+    }
+</script>
+
+</html>
