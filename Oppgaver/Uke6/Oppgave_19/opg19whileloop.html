@@ -26,6 +26,7 @@
     let winone = '';
     let wintwo = '';
     /*     let oddStartTrim = ''; */
+    let minusOdd = 0;
     let finalOdds = '';
     let oddNumbers = '';
     let sliceamount = 0;
@@ -59,15 +60,15 @@
             console.log(rngone);
             console.log(rngtwo);
             loops++
-            minusOdd = -oddNumbers;
         } if (rngone == rngtwo || searchDone == true) {
             finalOdds = oddNumbers.slice(2);
-            winone = rngone;
-            wintwo = rngtwo;
-            searchDone = true;
-            updateView();
+        winone = rngone;
+        wintwo = rngtwo;
+        searchDone = true;
+        updateView();
         }
     }
+
     /*             finalOdds = oddNumbers.slice(2, -sliceamount);
                 winone = rngone;
                 wintwo = rngtwo;
