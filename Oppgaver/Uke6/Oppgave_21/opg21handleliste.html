@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>handleliste</title>
+    <style></style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+</body>
+<script>
+    //m
+    const app = document.getElementById('app');
+/*     let hasUserAdded = false; */
+    let buttonDisabler = 'disabled';
+    let entryArray = [];
+    let userEntry = '';
+/*     let entryNum = 0; */
+
+    //v
+    updateView();
+    function updateView() {
+        let html = /*HTML*/`
+    <input id="input" type="text" placeholder="Write shopping list entry..."><br>
+    <div id="buttonspace"><button class="btn" onclick="recordInput()">Add entry!</button></div>
+    <br>
+    <div id="listDisplay"></div>
+    `;
+        app.innerHTML = html;
+    }
+    //c
+
+    function recordInput() {
+/*         entryNum++; */
+/*         hasUserAdded = true; */
+/*         buttonDisabler = ''; */
+        const inputArea = document.getElementById('input');
+        userEntry = inputArea.value;
+        entryArray.push(userEntry);
+        inputArea.value = '';
+        updateList();   
+    }
+
+    function updateList() {
+/*         if (entryNum == 0) {
+            hasUserAdded = false;
+        } else {
+            hasUserAdded = true;
+        } */
+        const displayListArea = document.getElementById('listDisplay');
+        displayListArea.innerHTML = entryArray;
+    }
+
+/*     function eraseInput() {
+        entryNum--;
+        entryArray.splice(1);
+        updateList();
+    } */
+
+</script>
+
+</html>

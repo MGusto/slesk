@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pockets</title>
+    <style>
+        #container {
+            display: grid;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #fullview {
+            display: grid;
+            justify-content: center;
+            min-height: 500px;
+            width: 500px;
+            border: 3px rgb(49, 49, 49) solid;
+            background-image: radial-gradient(white, gray);
+            border-radius: 50px;
+        }
+
+        #pocketView {
+            display: grid;
+            justify-content: center;
+        }
+
+        #pocketsBtn {
+            margin-top: 10px;
+            width: 120px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        let pocketCont = '';
+        var pocketsSearched = false;
+        const app = document.getElementById('app');
+        const pocketStuff = ['Hat', 'Pencil', 'Dinosaur', 'Showercap', 'Piece of Tape'];
+
+        view();
+        function view() {
+            let html = ``;
+            html += `<div id="container"><div id="fullview">${pocketsSearched ? `<button id="pocketsBtn" onclick="putBackInPockets()">Put it all back!</button>`:`<button id="pocketsBtn" onclick="seeWhatsInPockets()">Search your pockets!</button>`} 
+                <br>
+                <div id="pocketView">${pocketsSearched ? `${pocketCont}` : `Your pockets are closed...`}</div></div></div>
+            `;
+            app.innerHTML = html;
+        }
+
+        function seeWhatsInPockets(){
+            for(let i = 0; i < pocketStuff.length; i++){
+                let tempstring = `${pocketStuff[i]}`;
+                pocketCont +=`<li>${tempstring}</li><br>`;
+                console.log(`På runde ${ i } i loopen så ser jeg: ${ pocketStuff[i] }`);
+            }
+            pocketsSearched = true;
+            view();
+        }
+
+        function putBackInPockets() {
+            tempstring = '';
+            pocketCont = '';
+            pocketsSearched = false;
+            view();
+        }
+
+    </script>
+</body>
+
+</html>
