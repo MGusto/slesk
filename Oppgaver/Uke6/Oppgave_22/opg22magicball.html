@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8ball</title>
+    <style>
+        .ballbody {
+            height: 500px;
+            width: 500px;
+            border-radius: 50%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .centerview {
+            background-color: white;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 10px black;
+        }
+
+        .font {
+            font-size: 150px;
+            font-weight: bold;
+        }
+
+        #app {
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = document.getElementById('app');
+    let reply = ['Yes', 'Most likely', 'Outlook good', 'Uncertain', 'Not sure', 'Ask again later', 'No', 'Very doubtful', 'My sources say no'];
+    let face= '8';
+    let font= 'font'
+
+    show();
+    function show() {
+        let html = '';
+        html += /*HTML*/ `<div class="ballbody">
+            <div class="centerview" onclick="RNGreply()">
+                <div class="${font}">
+                    ${face}
+                    </div>
+                    </div>
+            </div>`;
+        app.innerHTML = html;
+    }
+
+    function RNGreply() {
+        let RNGindex = Math.floor(Math.random() * reply.length);
+        let replytxt = reply[RNGindex];
+        if(replytxt === face) {
+            RNGreply();
+        } else {
+            font = '';
+            face = replytxt;
+            show();
+        }
+/*         let replytxt = reply.length > 0 ? reply[RNGindex] : 'Out of fuel, reload page...'; */
+/*         reply.splice(RNGindex, 1); */ 
+    }
+</script>
+
+</html>

@@ -5,7 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>handleliste</title>
-    <style></style>
+    <style>
+        #app {
+            display: grid;
+            border: 2px black solid;
+            justify-content: center;
+            width: 500px;
+        }
+        #listDisplay {
+            display: grid;
+            border: 2px black dashed;
+            justify-content: center;
+            min-height: 25px;
+            width: 300px;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,8 +40,7 @@
     updateView();
     function updateView() {
         let html = /*HTML*/`
-    <input id="input" type="text" placeholder="Write shopping list entry..."><br>
-    <div id="buttonspace"><button class="btn" onclick="recordInput()">Add entry!</button></div>
+    <br><input id="input" type="text" placeholder="Write shopping list entry..."><button class="btn" onclick="recordInput()">Add entry!</button>
     <br>
     <div id="listDisplay"></div>
     `;
