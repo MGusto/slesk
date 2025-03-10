@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>epost</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = document.getElementById('app');
+    const undesirables = [' '];
+    const desirables = ['@', '.'];
+    let spaceError = `<li>it has a space</li>`;
+    let atError = `<li>it is missing an @</li>`;
+    let periodError = `<li>it is missing a period after @</li>`;
+    let periodAtError = `<li>it is missing an @ before the period</li>`;
+    let isOrNot = '';
+    let checkResult = '...';
+    let userEntry = '';
+    let isItEmail = '';
+    let checkTemp = '';
+
+    show();
+    function show() {
+        let html = '';
+        html += /*HTML*/ `<div class="displaybody"><h3>Check if your input is an email</h3><br>
+            <input type="text" id="inpfield" placeholder="Type in address..." onchange="checkInput(this.value)">
+            <br>
+            <div id="resultfield">Result: ${isItEmail} ${isOrNot} ${checkResult}</div>
+            </div>
+        `;
+        app.innerHTML = html;
+    }
+
+    function checkInput(userEntry) {
+        /* userEntry = ''; */
+        checkResult = '';
+        let hasSpace = false;
+        let hasAt = false;
+        let hasPeriod = false;
+        let hasPeriodNotAt = false;
+        isOrNot = '';
+        isItEmail = '';
+        /* const [inputArea] = document.getElementById('inpfield'); */
+        /* userEntry = inputArea; */
+        console.log(userEntry);
+
+        for (i = 0; i < userEntry.length; i++) {
+            checkTemp = userEntry.charAt(i);
+            if (checkTemp === ' ') {
+                hasSpace = true;
+                console.log('space in string');
+            }
+            if (checkTemp === '@') {
+                hasAt = true;
+                console.log('@ in string');
+            }
+            if (checkTemp === '.') {
+                hasPeriod = true;
+                console.log('period in string');
+            }
+        }
+        console.log('checkdone')
+
+        if (!hasAt && hasPeriod) {
+            hasPeriodNotAt = true;
+            console.log('no @ but period in string')
+        }
+
+        if (hasSpace) {
+            isItEmail = false;
+            isOrNot = ` - this is not an email address, because:`;
+            checkResult += spaceError;
+            console.log(isItEmail + ', not email because has space');
+        }
+
+        if (hasPeriodNotAt) {
+            isItEmail = false;
+            isOrNot = ` - this is not an email address, because:`;
+            checkResult += periodAtError;
+            console.log(isItEmail + ', not an email because no @ before period')
+        }
+
+        if (!hasPeriodNotAt && !hasAt) {
+            isItEmail = false;
+            isOrNot = ` - this is not an email address, because:`;
+            checkResult += atError;
+            console.log(isItEmail + ', not an email because no @');
+        } 
+
+        if (!hasPeriodNotAt && !hasPeriod) {
+            isItEmail = false;
+            isOrNot = ` - this is not an email address, because:`;
+            checkResult += periodError;
+            console.log(isItEmail + ', not an email because no .');
+        }
+
+        if (!hasSpace && hasAt && hasPeriod && !hasPeriodNotAt) {
+            isItEmail = true;
+            isOrNot = ` - this is an email address!`;
+            checkResult = '';
+        }
+        console.log(isItEmail);
+        show();
+    }
+
+</script>
+
+</html>
