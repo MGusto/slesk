@@ -66,7 +66,36 @@ img {
   padding: 5px;
 }
 
-.partyImg {
-  width: 40px;
-  height: 40px;
+.partyPic {
+  width: 70px;
+  height: 70px;
+}
+
+.partyProfile {
+  text-align: center;
+  border: 2px black solid;
+  padding: 5px;
+  margin: 5px;
+}
+
+.partySubContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.partyContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.partyMisc {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
 }

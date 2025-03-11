@@ -72,7 +72,7 @@ function updateView() {
   `;
 }
 
-function caughtPokemonView(){
+function caughtPokemonView() {
   app.innerHTML = /*HTML*/`
   <div class="caughtContainer">
     <h1>Du fanget ${player.pokemon[player.pokemon.length - 1].name}</h1>
@@ -84,16 +84,27 @@ function caughtPokemonView(){
   `;
 }
 
-function catchPokemon(){
+function catchPokemon() {
   player.pokemon.push(randomPokemon);
   caughtPokemonView();
 }
 
-function showPokemon(){
+function showPokemon() {
+  let partyview = '';
+  app.innerHTML = /*HTML*/ `<div class="partyContainer"><div class="partySubContainer">`;
+  for (const entry in player.pokemon) {
+    partyview += /*HTML*/ `<div class="partyProfile"><img class="partyPic" src="${player.pokemon[entry].image}"> ${player.pokemon[entry].name} <br>Lvl: ${player.pokemon[entry].level}</div>`;
+  }
+  app.innerHTML += partyview;
+  app.innerHTML += /*HTML*/ `
+  </div><div class="partyMisc"><h3>Du har fanget ${player.pokemon.length} Pokemon!</h3><br>
+              <button onclick="updateView()">Finn en annen</button>
+  </div>
+  </div>`;
   console.log(player.pokemon);
 }
 
-function getRandomPokemon(){
+function getRandomPokemon() {
   let randomNum = Math.floor(Math.random() * possiblePokemon.length);
   randomPokemon = possiblePokemon[randomNum];
 }
