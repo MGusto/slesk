@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sndbrd Oppgave</title>
+    <style>
+        #app {
+            display: flex;
+        }
+
+        img {
+            max-width: 150px;
+        }
+        .soundboard {
+            border: 2px solid black;
+            max-width: 250px;
+            max-height: 250px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body onload=show()>
+    <div id="app"></div>
+</body>
+<script>
+    //v
+    show();
+    function show() {
+        let html='';
+        html = /*HTML*/ `
+        <h3>Click 'em</h3>
+        <br>
+        <div id="sndone" class="soundboard" onclick="play('eugh')"><img src="img/shakin.gif"><audio id="eugh" class="sound" src="./eugh.mp3"></audio></div>
+        <div id="sndtwo" class="soundboard" onclick="play('tomscream')"><img src="img/stroke.gif"><audio id="tomscream" class="sound" src="./tomscream.mp3"></audio></div>
+        <div id="sndthree" class="soundboard" onclick="play('bonk')"><img src="img/wobble.gif"><audio id="bonk" class="sound" src="./bonk.mp3"></audio></div>
+        `;
+        app.innerHTML = html;
+    }
+    //c
+
+    function play(selectedSound) {
+        document.getElementById(selectedSound).play();
+    }
+</script>
+</html>
